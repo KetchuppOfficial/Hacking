@@ -27,7 +27,6 @@ int main (int argc, char *argv[])
 
     Close_File (file, argv[1]);
 
-
     FILE *new_file = Open_File ("NewCrack.COM", "wb");
 
     fwrite (buffer, sizeof (char), n_symbs, new_file);
