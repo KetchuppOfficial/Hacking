@@ -11,7 +11,7 @@ Patch.o:
 	$(CC) $(CFLAGS) Patch.c -o Patch.o
 
 run:
-	./Patch.out CRACK.COM
+	./Patch.out ../Hacking_Artem/CRACK.COM
 
 clean:
 	rm log_file.log
