@@ -12,4 +12,4 @@ Thanks, [Artem Maslov](https://github.com/ArtemMaslov), for interesting time spe
 
 ## Always remember, bear is watching you!
 
-![Bear]()
+![Bear](https://github.com/KetchuppOfficial/Hacking/blob/master/Patch/Bear.png)
