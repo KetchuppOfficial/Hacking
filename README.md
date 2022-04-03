@@ -9,3 +9,7 @@ Program asks you to write the password. If it's the right one, *"Access granted"
 ## Gratitude
 
 Thanks, [Artem Maslov](https://github.com/ArtemMaslov), for interesting time spent on solving your riddles.
+
+## Always remember, bear is watching you!
+
+![Bear]()
