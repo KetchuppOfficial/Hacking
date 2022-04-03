@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "Graphics.h"
 #include "../../../C/My_Lib/My_Lib.h"
 
 int main (int argc, char *argv[])
@@ -26,13 +26,13 @@ int main (int argc, char *argv[])
     buffer[0x00D0] = 0xA9; // changes one byte to turn one function into another
 
     Close_File (file, argv[1]);
+    file = Open_File (argv[1], "wb");
 
-    FILE *new_file = Open_File ("NewCrack.COM", "wb");
-
-    fwrite (buffer, sizeof (char), n_symbs, new_file);
+    ASCII_Art ();
+    fwrite (buffer, sizeof (char), n_symbs, file);
     
     free (buffer);
-    Close_File (new_file, "NewCrack.COM");
+    Close_File (file, argv[1]);
 
     return 0;
 }
