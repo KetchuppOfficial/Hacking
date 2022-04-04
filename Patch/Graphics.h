@@ -6,8 +6,8 @@
 #include <unistd.h>
 
 void ASCII_Art      (void);
-void Print_Frame    (void);
 void Print_Greeting (void);
 void Print_Timer    (void);
+void Print_Ending   (void);
 
 #endif
