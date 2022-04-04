@@ -28,11 +28,12 @@ int main (int argc, char *argv[])
     Close_File (file, argv[1]);
     file = Open_File (argv[1], "wb");
 
-    ASCII_Art ();
     fwrite (buffer, sizeof (char), n_symbs, file);
     
     free (buffer);
     Close_File (file, argv[1]);
+
+    ASCII_Art ();
 
     return 0;
 }
