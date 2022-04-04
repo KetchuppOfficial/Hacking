@@ -1,73 +1,80 @@
-#include "Graphics.h"
+#include "Patch.h"
 
-#define _$ "\033[0m"
-#define _B "\033[46m"
-#define _G "\033[32m"
-#define _Y "\033[33m"
+#define $ "\033[0m"
+#define B "\033[46m"
+#define G "\033[32m"
+#define Y "\033[33m"
 
-#define SET(x, y) printf ("\033[%d;%dH", x, y)
+#define BoGT "\033[1;33;46m" // Bold, green text; turquoise background
+#define BoPT "\033[1;35;46m" // Bold, purple text; turquoise background
+#define BoRT "\033[1;31;46m" // Bold, red text; turquoise background
+
+#define Set(x, y) printf ("\033[%d;%dH", x, y)
 
 #define Print_(string)      \
 do                          \
 {                           \
     printf ("%s", string);  \
-    SET (0, 0);             \
+    Set (0, 0);             \
 }                           \
 while (0)
 
 const char frame[] = {
-"                                          "_Y",---.           ,---.                                                                  \n"
-"                                         / /\"`.\\.--\"\"\"--./,\'\"\\ \\                                                            \n"
-"                                         \\ \\    _       _    / /                                                                   \n"
-"                                          `./  / __   __ \\  \\,\'                                                                   \n"
-"                                           /    /_O)_(_O\\    \\                                                                     \n"
-"                                           |  .-\'  ___  `-.  |                                                                      \n"
-"                                        .--|       \\_/       |--.                                                                   \n"
-"                                      ,\'    \\   \\   |   /   /    `.                                                               \n"
-"                                     /       `.  `--^--\'  ,\'       \\                                                              \n"
-"                                 .-\"\"\"\"\"-.     `--.___.--\'    .-\"\"\"\"\"-."_$"                                               \n"
-"                    "_G".-----------"_Y"/         \\"_G"------------------"_Y"/         \\"_G"--------------.                        \n"
-"                    | .---------"_Y"\\         /"_G"----------------- "_Y"\\         /"_G"------------. |                            \n"
-"                    | |"_B"          "_$ _Y"`-`--`--'"_$ _B"                    "_$ _Y"`--'--'-'"_$ _B"             "_$ _G"| |       \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n" 
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"                                                             "_$ _G"| |                                   \n"
-"                    | |"_B"_____________________________________________________________"_$ _G"| |                                   \n"
-"                    |_________________________________________________________________|                                              \n"
-"                                        "_Y")__________|__|__________(                                                               \n"
-"                                       |            ||            |                                                                  \n" 
-"                                       |____________||____________|                                                                  \n"
-"                                         ),-----.(      ),-----.(                                                                    \n"
-"                                        ,\'   ==.   \\   /  .==    `.                                                                \n"
-"                                       /            ) (            \\                                                                \n"
-"                                       `===========\'   \'===========\'                                                              \n"};
+"                                          "Y",---.           ,---.                                                                \n"
+"                                         / /\"`.\\.--\"\"\"--./,\'\"\\ \\                                                         \n"
+"                                         \\ \\    _       _    / /                                                                \n"
+"                                          `./  / __   __ \\  \\,\'                                                                \n"
+"                                           /    /_O)_(_O\\    \\                                                                  \n"
+"                                           |  .-\'  ___  `-.  |                                                                   \n"
+"                                        .--|       \\_/       |--.                                                                \n"
+"                                      ,\'    \\   \\   |   /   /    `.                                                            \n"
+"                                     /       `.  `--^--\'  ,\'       \\                                                           \n"
+"                                 .-\"\"\"\"\"-.     `--.___.--\'    .-\"\"\"\"\"-."$"                                             \n"
+"                    "G".-----------"Y"/         \\"G"------------------"Y"/         \\"G"--------------.                          \n"
+"                    | .---------"Y"\\         /"G"----------------- "Y"\\         /"G"------------. |                             \n"
+"                    | |"B"          "$ Y"`-`--`--'"$ B"                    "$ Y"`--'--'-'"$ B"             "$ G"| |               \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n" 
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"                                                             "$ G"| |                                   \n"
+"                    | |"B"_____________________________________________________________"$ G"| |                                   \n"
+"                    |_________________________________________________________________|                                           \n"
+"                                        "Y")__________|__|__________(                                                             \n"
+"                                       |            ||            |                                                               \n" 
+"                                       |____________||____________|                                                               \n"
+"                                         ),-----.(      ),-----.(                                                                 \n"
+"                                        ,\'   ==.   \\   /  .==    `.                                                             \n"
+"                                       /            ) (            \\                                                             \n"
+"                                       `===========\'   \'===========\'                                                           \n"};
 
-const char greeting[] = "\033[1;34;46m DOLGOV ALEXANDER PRESENTS...";
-//                           ./  \.  \.
-//                          ./    \.   turquoise (бирюзовый) background
-//                         ./      \.
-//                 bold text        blue text
+#undef B
+#undef G
 
-const char title[]    = "\033[1;34;46m MEGA PATCHING!";
+const char greeting[] = BoGT"DOLGOV ALEXANDER PRESENTS...";
 
-const char ending[]   = "\033[1;35;46m PATCHING DONE!!!"_$;
-//                            ./ \.        \.
-//                           ./   \.         purple text
-//                          ./     \.
-//                  22th line       46th column
+const char title[]    = BoGT"MEGA PATCHING!";
+
+const char ending[]   = BoPT"PATCHING DONE!!!"$;
+
 
 void ASCII_Art (void)
 {
+    #ifdef LINUX
     system ("clear");
+    #endif
+    
+    #ifdef WINDOWS
+    system ("cls");
+    mciSendString("play Mario.mp3 repeat", NULL, 0, NULL);
+    #endif
     
     Print_ (frame);
     Print_Greeting ();
@@ -79,13 +86,13 @@ void ASCII_Art (void)
 
 void Print_Greeting (void)
 {
-    SET (16, 39);
+    Set (16, 39);
     Print_ (greeting);
 
     fflush (stdout);
     sleep (1);
 
-    SET (17, 46);
+    Set (17, 46);
 
     Print_ (title);
 
@@ -95,37 +102,40 @@ void Print_Greeting (void)
 
 void Print_Timer (void)
 {
-    SET (20, 42);
+    Set (20, 42);
     
     for (int i = 5; i >= 0; i--)
     {
-        printf ("\033[1;31;46m%d SECONDS BEFORE PATCHING"_$, i);
+        printf (BoRT"%d SECONDS BEFORE PATCHING"$, i);
 
-        SET (5, 50);
+        Set (5, 50);
         if (i % 2 == 0)
         {
-            printf (_Y"O_");
-            SET (5, 55);
-            printf (_Y"O_");
+            printf (Y"O_");
+            Set (5, 55);
+            printf (Y"O_");
         }
         else
         {
-            printf (_Y"_O");
-            SET (5, 55);
-            printf (_Y"_O");
+            printf (Y"_O");
+            Set (5, 55);
+            printf (Y"_O");
         }
-        SET (0, 0);
+        Set (0, 0);
 
         fflush (stdout);
-        SET (20, 42);
+        Set (20, 42);
         
         sleep (1);
     }
 }
 
+#undef $
+#undef Y
+
 void Print_Ending (void)
 {
-    SET (22, 46);
+    Set (22, 46);
     printf ("%s", ending);
-    SET (36, 0);
+    Set (36, 0);
 }
